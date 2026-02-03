@@ -62,5 +62,8 @@ jobs:
             # ~/my-app 폴더 생성
             mkdir -p ~/my-app
             
-            # JAR 실행 (screen 사용)
-            screen -dmS myapp java -jar ~/my-app/*.jar
+            # 기존 screen 종료 (있으면)
+            screen -S myapp -X quit || true
+            
+            # JAR 실행 (screen + 로그)
+            screen -dmS myapp bash -c "java -jar ~/my-app/*.jar > ~/my-app/app.log 2>&1"
