@@ -28,24 +28,3 @@ jobs:
         with:
           name: my-app-artifact
           path: build/libs/*.jar
-#  deploy:
-#    runs-on: ubuntu-latest
-#    needs: build
-#    steps:
-#      - name: Download artifact
-#        uses: actions/download-artifact@v4
-#        with:
-#          name: my-app-artifact
-#          path: ./artifact
-#
-#      - name: Deploy to server
-#        uses: appleboy/ssh-action@v0.1.6
-#        with:
-#          host: ${{ secrets.SERVER_IP }}
-#          username: ${{ secrets.SERVER_USER }}
-#          key: ${{ secrets.SERVER_SSH_KEY }}
-#          script: |
-#            mkdir -p ~/my-app
-#            cp ./artifact/*.jar ~/my-app/
-#            pkill -f 'java -jar' || true
-#            nohup java -jar ~/my-app/*.jar > ~/my-app/app.log 2>&1 &
