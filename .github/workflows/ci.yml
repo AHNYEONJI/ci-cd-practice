@@ -58,3 +58,4 @@ jobs:
           script: |
             pkill -f 'java -jar' || true
             nohup java -jar ~/my-app/*.jar > ~/my-app/app.log 2>&1 &
+            disown
