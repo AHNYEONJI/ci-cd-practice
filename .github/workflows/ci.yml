@@ -44,6 +44,7 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
+          key_base64: true
           script: |
             mkdir -p ~/my-app
             cp ./artifact/*.jar ~/my-app/
