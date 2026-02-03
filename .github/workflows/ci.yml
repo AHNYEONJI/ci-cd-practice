@@ -56,14 +56,8 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            # 기존 java 프로세스 종료
-            pkill -f 'java -jar' || true
-            
-            # ~/my-app 폴더 생성
-            mkdir -p ~/my-app
-            
-            # 기존 screen 종료 (있으면)
-            screen -S myapp -X quit || true
-            
-            # JAR 실행 (screen + 로그)
-            screen -dmS myapp bash -c "java -jar ~/my-app/*.jar > ~/my-app/app.log 2>&1"
+           mkdir -p ~/my-app/artifact
+           cp ~/my-app/*.jar ~/my-app/artifact/
+           
+           # systemd 서비스 재시작
+           sudo systemctl restart my-app
