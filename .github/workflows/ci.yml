@@ -39,7 +39,7 @@ jobs:
           path: ./artifact
 
       - name: Deploy to server
-        uses: appleboy/ssh-action@v0.1.6
+        uses: appleboy/ssh-action@v0.1.9
         with:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USER }}
